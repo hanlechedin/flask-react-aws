@@ -1,5 +1,5 @@
 # build
-FROM node:18-alpine as build-react
+FROM node:19 as build-react
 WORKDIR /app
 ENV PATH /app/node_modules/.bin:$PATH
 ENV NODE_ENV production
@@ -15,6 +15,7 @@ RUN npm run build
 FROM nginx:stable-alpine as production
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
+ENV FLASK_DEBUG 0
 ENV FLASK_ENV=production
 ENV APP_SETTINGS=src.config.ProductionConfig
 WORKDIR /app
