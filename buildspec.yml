@@ -4,12 +4,13 @@ env:
   variables:
     AWS_REGION: "eu-west-3"
     REACT_APP_API_SERVICE_URL: "http://localhost:5004"
+    AWS_ACCOUNT: "895672350208"
 
 phases:
   pre_build:
     commands:
       - echo logging in to ecr...
-      - aws ecr get-login-password --region eu-west-3 | docker login --username AWS --password-stdin 895672350208.dkr.ecr.eu-west-3.amazonaws.com
+      - aws ecr get-login-password --region AWS_REGION | docker login --username AWS --password-stdin AWS_ACCOUNT.dkr.ecr.AWS_REGION.amazonaws.com
   build:
     commands:
       - echo building images...
