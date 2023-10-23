@@ -11,7 +11,7 @@ phases:
       - echo logging in to ecr...
       - >
         aws ecr get-login-password --region $AWS_REGION \
-          | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com
+          | docker login --username AWS --password-stdin 895672350208.dkr.ecr.$AWS_REGION.amazonaws.com
   build:
     commands:
       - echo building images...
@@ -23,7 +23,7 @@ phases:
       - >
         docker build \
           -f services/client/Dockerfile.prod \
-          -t $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/test-driven-client:prod \
+          -t 895672350208.dkr.ecr.eu-west-3.amazonaws.com/test-driven-client:prod \
           --build-arg NODE_ENV=production \
           --build-arg REACT_APP_API_SERVICE_URL=$REACT_APP_API_SERVICE_URL \
           ./services/client
