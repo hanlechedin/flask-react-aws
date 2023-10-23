@@ -4,6 +4,7 @@ env:
   variables:
     AWS_REGION: "eu-west-3"
     REACT_APP_API_SERVICE_URL: "http://localhost:5004"
+    REACT_APP_API_SERVICE_URL: "flask-react-alb-1445691531.eu-west-3.elb.amazonaws.com"
 
 phases:
   pre_build:
@@ -54,8 +55,3 @@ phases:
     - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/test-driven-users:prod
     - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/test-driven-client:builder
     - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/test-driven-client:prod
-
-  env:
-  variables:
-    AWS_REGION: "eu-west-3"
-    REACT_APP_API_SERVICE_URL: "flask-react-alb-1445691531.eu-west-3.elb.amazonaws.com"
